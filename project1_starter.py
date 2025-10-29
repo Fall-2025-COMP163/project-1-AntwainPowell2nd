@@ -108,7 +108,7 @@ def load_character(filename):
             return character 
 
 def display_character(character):
-     with open(character["file"], 'r') as file:
+     with open(character, 'r') as file:
         data = file.readlines()
         for line in data:
             if ":" in line:
@@ -116,7 +116,7 @@ def display_character(character):
                 print(f"{key.strip()}: {value.strip()}") 
 
 def level_up(character):
-    with open(character["file"], 'r') as file:
+    with open(character, 'r') as file:
          data = file.readlines()
     updated_data = []
     character_class = None

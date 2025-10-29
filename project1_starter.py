@@ -98,11 +98,10 @@ def load_character(filename):
                 temp = i.split(":")
                 key = temp[0].strip()
                 value = temp[1].strip()
-                character[key] = value
                 if key == "Character Name":
                     key = "name"
-                if key == "class":
-                    key = "Class"
+                else:
+                    key = key.lower()
                 if value.isdigit():
                     value = int(value)
                 character[key] = value  

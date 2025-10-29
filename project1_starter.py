@@ -107,6 +107,7 @@ def load_character(filename):
                 character[key] = value  
             return character 
 
+
 def display_character(character):
      with open(character, 'r') as file:
         data = file.readlines()

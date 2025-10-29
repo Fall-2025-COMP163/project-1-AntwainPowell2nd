@@ -37,7 +37,7 @@ def create_character(name, character_class):
     }
     rouge_starter = {
         "name" : name,
-        "class" : "Rouge",
+        "class" : "Rogue",
         "level" : 1,
         "strength" : 40,
         "magic" : 15,
@@ -57,7 +57,7 @@ def create_character(name, character_class):
         return warrior_starter
     elif character_class == "Mage":
         return mage_starter
-    elif character_class == "Rouge":
+    elif character_class == "Rogue":
         return rouge_starter 
     elif character_class == "Cleric":
         return cleric_starter

@@ -82,7 +82,7 @@ def save_character(character, filename):
             if key.lower() == "name":
                 file.write(f"Character Name: {value}\n")
                 continue
-            file.write(f"{key}: {value}\n")
+            file.write(f"{key.title()}: {value}\n")
     return True
 
 def load_character(filename):

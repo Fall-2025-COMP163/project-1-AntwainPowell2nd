@@ -101,6 +101,8 @@ def load_character(filename):
                 character[key] = value
                 if key == "Character Name":
                     key = "name"
+                if key == "class":
+                    key = "Class"
                 if value.isdigit():
                     value = int(value)
                 character[key] = value  

@@ -88,7 +88,10 @@ def save_character(character, filename):
 def load_character(filename):
     with open(filename, 'r') as file:
         data = file.readlines()
-        return data 
+        for i in data:
+            temp = i.split(":")
+            temp_dict = {temp[0] : temp[1]}
+        return temp_dict 
 
 def display_character(character):
      with open(character, 'r') as file:
@@ -130,6 +133,6 @@ if __name__ == "__main__":
     # Example usage:
     # char = create_character("TestHero", "Warrior")
     # display_character(char)
-    # save_character(char, "my_character.txt")
-    # loaded = load_character("my_character.txt")
+    save_character("Aj", "my_character.txt")
+    loaded = load_character("my_character.txt") 
 

@@ -80,7 +80,7 @@ def save_character(character, filename):
     with open(filename, 'w') as file:
         for key, value in character.items():
             if key.lower() == "name":
-                file.write(f"Character Name : {value}\n")
+                file.write(f"Character Name: {value}\n")
                 continue
             file.write(f"{key}: {value}\n")
     return True

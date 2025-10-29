@@ -19,39 +19,39 @@ import os # AI helped me use this as like an all seeing eye to check if a file e
 def create_character(name, character_class):
     warrior_starter = {
         "name" : name,
-        "Class" : "Warrior",
-        "Level" : 1, 
-        "Strength" : 60, 
-        "Magic" : 10,
-        "Health" : 110,
-        "Gold" : 60
+        "class" : "Warrior",
+        "level" : 1, 
+        "strength" : 60, 
+        "magic" : 10,
+        "health" : 110,
+        "gold" : 60
     }
     mage_starter = {
-        "ame" : name,
-       "Class" : "Mage",
-       "Level" : 1,
-       "Strength" : 15, 
-       "Magic" : 110, 
-       "Health" : 50,
-       "Gold" : 60 
+        "name" : name,
+       "class" : "Mage",
+       "level" : 1,
+       "strength" : 15, 
+       "magic" : 110, 
+       "health" : 50,
+       "gold" : 60 
     }
     rouge_starter = {
         "name" : name,
-        "Class" : "Rogue",
-        "Level" : 1,
-        "Strength" : 40,
-        "Magic" : 15,
-        "Health" : 75,
-        "Gold" : 60 
+        "class" : "Rogue",
+        "level" : 1,
+        "strength" : 40,
+        "magic" : 15,
+        "health" : 75,
+        "gold" : 60 
     }
     cleric_starter = {
         "name" : name,
-        "Class" : "Cleric",
-        "Level" : 1,
-        "Strength" : 20,
-        "Magic" : 90,
-        "Health" : 60,
-        "Gold" : 60 
+        "class" : "Cleric",
+        "level" : 1,
+        "strength" : 20,
+        "magic" : 90,
+        "health" : 60,
+        "gold" : 60 
     }
     if character_class == "Warrior":
         return warrior_starter

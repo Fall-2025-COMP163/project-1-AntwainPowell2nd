@@ -82,13 +82,8 @@ def save_character(character, filename):
             if key.lower() == "name":
                 file.write(f"Character Name: {value}\n")
                 continue
-            if key == "class":
-                key = key.capitalize()
-                character[key] = value
-            else:
-                key = key.lower()
-                character[key] = value
-            file.write(f"{key}: {value}\n")
+            else: 
+                file.write(f"{key.capitalize()}: {value}\n")
     return True
 
 def load_character(filename):

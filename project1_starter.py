@@ -91,8 +91,6 @@ def load_character(filename):
             data = file.readlines()
             character = {}
             for i in data: 
-                if key != "Character Name":
-                    value = int(temp[1].strip())
                 temp = i.split(":")
                 key = temp[0].strip()
                 value = temp[1].strip()

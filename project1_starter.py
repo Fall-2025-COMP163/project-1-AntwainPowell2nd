@@ -87,7 +87,7 @@ def save_character(character, filename):
                 continue
             else: 
                 file.write(f"{key.capitalize()}: {value}\n")
-            filename = character 
+        filename = character 
     return True
 
 def load_character(filename):

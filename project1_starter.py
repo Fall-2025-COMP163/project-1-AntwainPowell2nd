@@ -95,6 +95,8 @@ def load_character(filename):
                 key = temp[0].strip()
                 value = temp[1].strip()
                 character[key] = value
+                if key == "Character Name":
+                    key = "name"
                 if value.isdigit():
                     value = int(value)
                 character[key] = value  

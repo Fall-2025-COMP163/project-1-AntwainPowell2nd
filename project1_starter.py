@@ -77,15 +77,14 @@ def calculate_stats(character_class, level):
         return cleric_stats 
 
 def save_character(character, filename):
-    success = False
-    if character and filename:  
-        with open(filename, 'w') as file:
-            for key, value in character.items():
-                if key == "Name":
-                    file.write(f"Character {key}: {value}\n")
-                    continue
-                file.write(f"{key}: {value}\n")
-        success = os.path.exists(filename)# AI helped with file I/O error handling logic in save_character function
+    success = False 
+    with open(filename, 'w') as file:
+        for key, value in character.items():
+            if key == "Name":
+                file.write(f"Character {key}: {value}\n")
+                continue
+            file.write(f"{key}: {value}\n")
+    success = os.path.exists(filename)# AI helped with file I/O error handling logic in save_character function
     return success 
 
 def load_character(filename):

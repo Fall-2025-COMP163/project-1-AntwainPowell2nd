@@ -6,13 +6,22 @@ Date: [Date]
 AI Usage: [Document any AI assistance used]
 Example: AI helped with file I/O error handling logic in save_character function
 """
+"""
+COMP 163 - Project 1: Character Creator & Saving/Loading
+Name: [Antwain Powell]
+Date: [Date]
+
+AI Usage: [Document any AI assistance used]
+Example: AI helped with file I/O error handling logic in save_character function
+"""
 import os # AI helped me use this as like an all seeing eye to check if a file exists after saving it.
+
 def create_character(name, character_class):
     warrior_starter = {
         "name" : name,
         "class" : "Warrior",
         "level" : 1, 
-        "stregnth" : 60, 
+        "strength" : 60, 
         "magic" : 10,
         "health" : 110,
         "gold" : 60
@@ -21,7 +30,7 @@ def create_character(name, character_class):
         "name" : name,
        "class" : "Mage",
        "level" : 1,
-       "stregnth" : 15, 
+       "strength" : 15, 
        "magic" : 110, 
        "health" : 50,
        "gold" : 60 
@@ -30,16 +39,16 @@ def create_character(name, character_class):
         "name" : name,
         "class" : "Rouge",
         "level" : 1,
-        "stregnth" : 40,
+        "strength" : 40,
         "magic" : 15,
         "health" : 75,
         "gold" : 60 
     }
     cleric_starter = {
         "name" : name,
-        "class" : "Clerec",
+        "class" : "Cleric",
         "level" : 1,
-        "stregnth" : 20,
+        "strength" : 20,
         "magic" : 90,
         "health" : 60,
         "gold" : 60 
@@ -51,7 +60,8 @@ def create_character(name, character_class):
     elif character_class == "Rouge":
         return rouge_starter 
     elif character_class == "Cleric":
-        return cleric_starter 
+        return cleric_starter
+
 def calculate_stats(character_class, level):
     if level >= 1 and level < 5:
         warrior_stats = "medium strength", "very low magic", "medium health"
@@ -81,25 +91,29 @@ def calculate_stats(character_class, level):
         return rouge_stats 
     elif character_class == "Cleric":
         return cleric_stats
+
 def save_character(character, filename):
     success = False
     if character and filename:  
         with open(filename, 'w') as file:
             for key, value in character.items():
                 file.write(f"{key}: {value}\n")
-        success = os.path.exists(filename) # AI was used to help me figure out how to check if a file exists after saving it.
-    return success
+        success = os.path.exists(filename)# AI helped with file I/O error handling logic in save_character function
+    return success 
+
 def load_character(filename):
     with open(filename, 'r') as file:
         data = file.readlines()
-        return data
+        return data 
+
 def display_character(character):
      with open(character, 'r') as file:
         data = file.readlines()
         for line in data:
             if ":" in line:
                 key, value = line.split(":", 1)
-                print(f"{key.strip()}: {value.strip()}")
+                print(f"{key.strip()}: {value.strip()}") 
+
 def level_up(character):
     with open(character, 'r') as file:
          data = file.readlines()
@@ -112,19 +126,17 @@ def level_up(character):
             new_level = int(value.strip()) + 1
             updated_data.append(f"{key.strip()}: {new_level}\n")
             level = new_level
-        else:
-            updated_data.append(line)
-        if "class" in line:
+        elif "class" in line:
             key, value = line.split(":", 1)
             character_class = value.strip()
-    with open(character, 'w') as file:
-        file.writelines(updated_data)
+            updated_data.append(line)
+        elif "Upgraded Stats" in line:
+            updated_data.append(line)
     if character_class and level:
         stats = calculate_stats(character_class, level)
-        with open(character, 'a') as file:
-            file.write(f"{stats}\n")
-
-
+        updated_data.append(f"Upgraded Stats: {stats}\n") 
+    with open(character, 'w') as file:
+        file.writelines(updated_data)
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":

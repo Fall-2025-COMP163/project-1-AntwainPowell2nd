@@ -63,34 +63,18 @@ def create_character(name, character_class):
         return cleric_starter
 
 def calculate_stats(character_class, level):
-    if level >= 1 and level < 5:
-        warrior_stats = "medium strength", "very low magic", "medium health"
-        mage_stats = "very low strength", "medium magic", "low health"
-        rouge_stats = "low strength", "very low magic", "low-medium health"
-        cleric_stats = "very low strength", "medium magic", "medium health"
-    elif level >= 5 and level < 10:
-        warrior_stats = "high strength", "low magic", "high health"
-        mage_stats = "low strength", "high magic", "low-medium health"
-        rouge_stats = "medium strength", "low magic", "medium-high health"
-        cleric_stats = "low strength", "high magic", "high health"
-    elif level >= 10 and level < 15:
-        warrior_stats = "very high strength", "medium magic", "very high health"
-        mage_stats = "medium strength", "very high magic", "medium health"
-        rouge_stats = "high strength", "medium magic", "high health"
-        cleric_stats = "medium strength", "very high magic", "very high health"
-    elif level >= 15:
-        warrior_stats = "extreme strength", "high magic", "extreme health"
-        mage_stats = "high strength", "extreme magic", "high health"
-        rouge_stats = "very high strength", "high magic", "very high health"
-        cleric_stats = "high strength", "extreme magic", "extreme health"
+    warrior_stats = level * 25, level * 5, level * 30
+    mage_stats = level * 5, level * 35, level * 10
+    rogue_stats = level * 15, level * 10, level * 20
+    cleric_stats = level * 10, level * 30, level * 25
     if character_class == "Warrior":
         return warrior_stats
     elif character_class == "Mage":
         return mage_stats
     elif character_class == "Rouge":
-        return rouge_stats 
+        return rogue_stats 
     elif character_class == "Cleric":
-        return cleric_stats
+        return cleric_stats 
 
 def save_character(character, filename):
     success = False

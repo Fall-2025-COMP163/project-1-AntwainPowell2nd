@@ -86,7 +86,7 @@ def save_character(character, filename):
     return success 
 
 def load_character(filename):
-    with open(filename, 'r') as file:
+    with open((f"{filename}"), 'r') as file:
         data = file.readlines()
         for i in data:
             temp = i.split(":")

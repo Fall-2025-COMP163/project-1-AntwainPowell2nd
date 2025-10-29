@@ -95,13 +95,7 @@ def load_character(filename):
                 key = temp[0].strip()
                 value = temp[1].strip()
                 character[key] = value
-            return character
-     '''with open((f"{filename}"), 'r') as file:
-        data = file.readlines()
-        for i in data:
-            temp = i.split(":")
-            temp_dict = {temp[0] : temp[1]}
-        return temp_dict''' 
+            return character 
 
 def display_character(character):
      with open(character, 'r') as file:

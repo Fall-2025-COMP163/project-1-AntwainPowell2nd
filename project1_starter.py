@@ -82,6 +82,9 @@ def save_character(character, filename):
             if key.lower() == "name":
                 file.write(f"Character Name: {value}\n")
                 continue
+            else:
+                key = key.lower()
+                character[key] = value
             file.write(f"{key.title()}: {value}\n")
     return True
 

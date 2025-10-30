@@ -149,7 +149,7 @@ def level_up(character):
     if character_class and level:
         stats = calculate_stats(character_class, level)
         updated_data.append(f"Upgraded Stats: {stats}\n") 
-    with open(character, 'w') as file:
+    with open(file_path, 'w') as file:
         file.writelines(updated_data)
 
 # Main program area (optional - for testing your functions)

@@ -144,8 +144,7 @@ def level_up(character):
         character["level"] = 1
 
     if "class" in character:
-        stats = calculate_stats(character["class"], character["level"])
-        character["upgraded stats"] = stats
+        character["upgraded stats"] = calculate_stats(character["class"], character["level"])
 
     with open(file_path, 'w') as file:
         for key, value in character.items():
@@ -157,6 +156,7 @@ def level_up(character):
                 file.write(f"Upgraded Stats: {value}\n")
             else:
                 file.write(f"{key.capitalize()}: {value}\n")
+
 
 
 

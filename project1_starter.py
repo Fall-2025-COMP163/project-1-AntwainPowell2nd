@@ -77,6 +77,9 @@ def calculate_stats(character_class, level):
         return cleric_stats 
 
 def save_character(character, filename):
+    directory = os.path.dirname(filename)
+    if directory and not os.path.exists(directory):
+        os.makedirs(directory, exist_ok=True)
     with open(filename, 'w') as file:
         for key, value in character.items():
             if key.lower() == "name":

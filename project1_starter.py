@@ -135,12 +135,12 @@ def level_up(character):
     character_class = None
     level = None
     for line in data:
-        if "level" in line:
+        if "level" in line.lower():
             key, value = line.split(":", 1)
             new_level = int(value.strip()) + 1
             updated_data.append(f"{key.strip()}: {new_level}\n")
             level = new_level
-        elif "class" in line:
+        elif "class" in line.lower():
             key, value = line.split(":", 1)
             character_class = value.strip()
             updated_data.append(line)

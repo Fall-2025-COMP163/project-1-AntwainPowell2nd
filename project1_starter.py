@@ -144,7 +144,10 @@ def level_up(character):
             key, value = line.split(":", 1)
             character_class = value.strip()
             updated_data.append(line)
-        elif "Upgraded Stats" in line:
+        elif "Upgraded Stats" in line.lower():
+            updated_data.append(line)
+            continue
+        else:
             updated_data.append(line)
     if character_class and level:
         stats = calculate_stats(character_class, level)

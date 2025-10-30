@@ -35,7 +35,7 @@ def create_character(name, character_class):
        "health" : 50,
        "gold" : 60 
     }
-    rouge_starter = {
+    rogue_starter = {
         "name" : name,
         "class" : "Rogue",
         "level" : 1,
@@ -58,7 +58,7 @@ def create_character(name, character_class):
     elif character_class == "Mage":
         return mage_starter
     elif character_class == "Rogue":
-        return rouge_starter 
+        return rogue_starter 
     elif character_class == "Cleric":
         return cleric_starter
 
@@ -71,7 +71,7 @@ def calculate_stats(character_class, level):
         return warrior_stats
     elif character_class == "Mage":
         return mage_stats
-    elif character_class == "Rouge":
+    elif character_class == "Rogue":
         return rogue_stats 
     elif character_class == "Cleric":
         return cleric_stats 
@@ -154,7 +154,6 @@ def level_up(character):
             character_class = value.strip()
             updated_data.append(line)
         elif "Upgraded Stats" in lower:
-            updated_data.append(line)
             continue
         else:
             updated_data.append(line) 

@@ -86,8 +86,7 @@ def save_character(character, filename):
                 file.write(f"Class: {value}\n")
                 continue
             else: 
-                file.write(f"{key.capitalize()}: {value}\n")
-        filename = character 
+                file.write(f"{key.capitalize()}: {value}\n") 
     return True
 
 def load_character(filename):
@@ -108,9 +107,9 @@ def load_character(filename):
                 character[key] = value  
             return character 
 
-
 def display_character(character):
-     with open(character, 'r') as file:
+     file_path = character["file"]
+     with open(file_path, 'r') as file:
         data = file.readlines()
         for line in data:
             if ":" in line:
@@ -118,7 +117,8 @@ def display_character(character):
                 print(f"{key.strip()}: {value.strip()}") 
 
 def level_up(character):
-    with open(character, 'r') as file:
+    file_path = character["file"]
+    with open(file_path, 'r') as file:
          data = file.readlines()
     updated_data = []
     character_class = None

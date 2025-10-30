@@ -107,8 +107,16 @@ def load_character(filename):
                 character[key] = value  
             return character 
 
+def get_file_path(character):
+    if isinstance(character, dict):
+        return character.get("file")
+    return character
+
 def display_character(character):
-     file_path = character["file"]
+     file_path = get_file_path(character)
+     if not file_path:
+         print("No file path found for the character.")
+         return
      with open(file_path, 'r') as file:
         data = file.readlines()
         for line in data:
@@ -117,7 +125,10 @@ def display_character(character):
                 print(f"{key.strip()}: {value.strip()}") 
 
 def level_up(character):
-    file_path = character["file"]
+    file_path = get_file_path(character)
+    if not file_path:
+        print("No file path found for the character.")
+        return
     with open(file_path, 'r') as file:
          data = file.readlines()
     updated_data = []

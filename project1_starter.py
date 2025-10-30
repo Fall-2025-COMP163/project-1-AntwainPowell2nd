@@ -133,11 +133,6 @@ def display_character(character):
                 print(f"{key.strip()}: {value.strip()}") 
 
 def level_up(character):
-    file_path = get_file_path(character)
-    if not file_path:
-        print("No file path found for the character.")
-        return
-
     if "level" in character:
         character["level"] += 1
     else:
@@ -146,16 +141,19 @@ def level_up(character):
     if "class" in character:
         character["upgraded stats"] = calculate_stats(character["class"], character["level"])
 
-    with open(file_path, 'w') as file:
-        for key, value in character.items():
-            if key.lower() == "name":
-                file.write(f"Character Name: {value}\n")
-            elif key.lower() == "class":
-                file.write(f"Class: {value}\n")
-            elif key.lower() == "upgraded stats":
-                file.write(f"Upgraded Stats: {value}\n")
-            else:
-                file.write(f"{key.capitalize()}: {value}\n")
+    file_path = get_file_path(character)
+    if file_path:
+        with open(file_path, 'w') as file:
+            for key, value in character.items():
+                if key.lower() == "name":
+                    file.write(f"Character Name: {value}\n")
+                elif key.lower() == "class":
+                    file.write(f"Class: {value}\n")
+                elif key.lower() == "upgraded stats":
+                    file.write(f"Upgraded Stats: {value}\n")
+                else:
+                    file.write(f"{key.capitalize()}: {value}\n")
+
 
 
 

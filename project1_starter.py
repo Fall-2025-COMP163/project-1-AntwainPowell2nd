@@ -77,6 +77,13 @@ def calculate_stats(character_class, level):
         return cleric_stats 
 
 def save_character(character, filename):
+    directory = os.path.dirname(filename)
+    if directory and not os.path.exists(directory):
+        print("Error: Directory does not exist.")
+        return False
+    if directory and not os.access(directory, os.W_OK):
+        print("Error: Cannot write to this directory.")
+        return False
     with open(filename, 'w') as file:
         for key, value in character.items():
             if key.lower() == "name":
@@ -87,6 +94,7 @@ def save_character(character, filename):
                 continue
             else: 
                 file.write(f"{key.capitalize()}: {value}\n") 
+    character["file"] = filename
     return True
 
 def load_character(filename):
@@ -135,17 +143,21 @@ def level_up(character):
     character_class = None
     level = None
     for line in data:
-        if "level" in line.lower():
+        lower = line.lower()
+        if "level" in lower:
             key, value = line.split(":", 1)
             new_level = int(value.strip()) + 1
             updated_data.append(f"{key.strip()}: {new_level}\n")
             level = new_level
-        elif "class" in line.lower():
+        elif "class" in lower:
             key, value = line.split(":", 1)
             character_class = value.strip()
             updated_data.append(line)
-        elif "Upgraded Stats" in line:
+        elif "Upgraded Stats" in lower:
             updated_data.append(line)
+            continue
+        else:
+            updated_data.append(line) 
     if character_class and level:
         stats = calculate_stats(character_class, level)
         updated_data.append(f"Upgraded Stats: {stats}\n") 

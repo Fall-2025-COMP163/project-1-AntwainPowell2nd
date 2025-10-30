@@ -138,7 +138,7 @@ def level_up(character):
         print("No file path found for the character.")
         return
     with open(file_path, 'r') as file:
-         data = file.readlines()
+        data = file.readlines()
     updated_data = []
     character_class = None
     level = None
@@ -153,15 +153,16 @@ def level_up(character):
             key, value = line.split(":", 1)
             character_class = value.strip()
             updated_data.append(line)
-        elif "Upgraded Stats" in lower:
+        elif "upgraded stats" in lower:
             continue
         else:
-            updated_data.append(line) 
+            updated_data.append(line)
     if character_class and level:
         stats = calculate_stats(character_class, level)
-        updated_data.append(f"Upgraded Stats: {stats}\n") 
+        updated_data.append(f"Upgraded Stats: {stats}\n")
     with open(file_path, 'w') as file:
         file.writelines(updated_data)
+
 
 # Main program area (optional - for testing your functions)
 if __name__ == "__main__":

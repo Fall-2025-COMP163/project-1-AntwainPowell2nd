@@ -137,31 +137,27 @@ def level_up(character):
     if not file_path:
         print("No file path found for the character.")
         return
-    with open(file_path, 'r') as file:
-        data = file.readlines()
-    updated_data = []
-    character_class = None
-    level = None
-    for line in data:
-        lower = line.lower()
-        if "level" in lower:
-            key, value = line.split(":", 1)
-            new_level = int(value.strip()) + 1
-            updated_data.append(f"{key.strip()}: {new_level}\n")
-            level = new_level
-        elif "class" in lower:
-            key, value = line.split(":", 1)
-            character_class = value.strip()
-            updated_data.append(line)
-        elif "upgraded stats" in lower:
-            continue
-        else:
-            updated_data.append(line)
-    if character_class and level:
-        stats = calculate_stats(character_class, level)
-        updated_data.append(f"Upgraded Stats: {stats}\n")
+
+    if "level" in character:
+        character["level"] += 1
+    else:
+        character["level"] = 1
+
+    if "class" in character:
+        stats = calculate_stats(character["class"], character["level"])
+        character["upgraded stats"] = stats
+
     with open(file_path, 'w') as file:
-        file.writelines(updated_data)
+        for key, value in character.items():
+            if key.lower() == "name":
+                file.write(f"Character Name: {value}\n")
+            elif key.lower() == "class":
+                file.write(f"Class: {value}\n")
+            elif key.lower() == "upgraded stats":
+                file.write(f"Upgraded Stats: {value}\n")
+            else:
+                file.write(f"{key.capitalize()}: {value}\n")
+
 
 
 # Main program area (optional - for testing your functions)

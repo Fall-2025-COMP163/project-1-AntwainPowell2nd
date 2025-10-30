@@ -87,6 +87,7 @@ def save_character(character, filename):
                 continue
             else: 
                 file.write(f"{key.capitalize()}: {value}\n") 
+    character["file"] = filename 
     return True
 
 def load_character(filename):
@@ -158,8 +159,8 @@ if __name__ == "__main__":
     print("Test your functions here!")
     
     # Example usage:
-    # char = create_character("TestHero", "Warrior")
-    # display_character(char)
-    save_character("Aj", "my_character.txt")
-    loaded = load_character("my_character.txt") 
+    char = create_character("TestHero", "Warrior")
+    display_character(char)
+    save_character(char, "C:\\Users\\ajpfu\\github-classroom\\Fall-2025-COMP163\\project-1-AntwainPowell2nd\\my_character.txt")
+    loaded = load_character("C:\\Users\\ajpfu\github-classroom\\Fall-2025-COMP163\\project-1-AntwainPowell2nd\\my_character.txt") 
 

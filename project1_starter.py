@@ -77,11 +77,11 @@ def calculate_stats(character_class, level):
         return cleric_stats 
 
 def save_character(character, filename):
-    directory = os.path.dirname(filename)
-    if directory and not os.path.exists(directory):
+    directory = os.path.dirname(filename) # AI helped me implement this error handling to check if the directory exists before attempting to save the file.
+    if directory and not os.path.exists(directory): # Checks if the variable 'directory' has a non-empty value AND that the specified directory does NOT already exist on the file system.
         print("Error: Directory does not exist.")
         return False
-    if directory and not os.access(directory, os.W_OK):
+    if directory and not os.access(directory, os.W_OK): # AI helped me implement this error handling to check if the directory is writable before attempting to save the file.
         print("Error: Cannot write to this directory.")
         return False
     with open(filename, 'w') as file:
@@ -98,7 +98,7 @@ def save_character(character, filename):
     return True
 
 def load_character(filename):
-    if os.path.exists(filename) == True:
+    if os.path.exists(filename) == True: # AI helped me implement this error handling to check if the file exists before attempting to load it.
         with open((f"{filename}"), 'r') as file:
             data = file.readlines()
             character = {}
@@ -115,13 +115,13 @@ def load_character(filename):
                 character[key] = value  
             return character 
 
-def get_file_path(character):
-    if isinstance(character, dict):
-        return character.get("file")
-    return character
+def get_file_path(character): # AI helped develope this function, this function was designed to retrieve a file path from a character object.
+    if isinstance(character, dict): # Check if the input 'character' is a dictionary.
+        return character.get("file") #This line checks if it is a dictionary and attempts to retrieve the value associated with the key "file".
+    return character # If 'character' is not a dictionary, assume it's already a file path and return it directly.
 
 def display_character(character):
-     file_path = get_file_path(character)
+     file_path = get_file_path(character)# AI used to emplement get_file_path function into display function this allows flexibility whether 'character' is a dict or a direct path.
      if not file_path:
          print("No file path found for the character.")
          return
@@ -141,7 +141,7 @@ def level_up(character):
     if "class" in character:
         character["upgraded stats"] = calculate_stats(character["class"], character["level"])
 
-    file_path = get_file_path(character)
+    file_path = get_file_path(character) # AI used to emplement get_file_path function into level_up functionthis retrieves the file path to save the updated character data.
     if file_path:
         with open(file_path, 'w') as file:
             for key, value in character.items():
